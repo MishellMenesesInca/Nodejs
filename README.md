@@ -6,33 +6,33 @@ Angular dispone de una herramienta muy potente que nos ayuda a generar component
 @angular/cli no sólo nos ayuda a crear los ficheros necesarios para cada acción (ejemplo: generar un nuevo componente), sino que también modifica los archivos necesarios, agrega paquetes y muchas cosas más...
 A continuación veremos lo fácil que es añadir los archivos y configuraciones necesarias a nuestra app para que finalmente sea considerada una PWA.
 
-Paso 1
+<h2>Paso 1</h2>
 Primero, creamos nuestro proyecto de angulary um i
 
 ng new angular-pwa-sw-example
 
 
 
-Paso 2
+<h2>Paso 2</h2>
 Compilamos el proyecto en modo producción, ya que vamos a realizar la misma prueba más adelante con la implementación de PWA y será necesario que se realice en modo producción (outputPath: /dist).
 
 ng build --prod
 
 
 
-Paso 3
+<h2>Paso 3</h2>
 Levantamos la aplicación con el paquete http-server de npm con el siguiente comando para que evite cacheo.
 
 http-server -p 8080 -c-1 dist/angular-pwa-sw-example
 
 Levantamos nuestra aplicación de esta manera porque el servidor de desarrollo de Angular (ng serve) no permite el uso de Service Workers. Así podemos realizar más tarde la comparativa del antes y el después en las mismas condiciones.
 
-Paso 4
+<h2>Paso 4</h2>
 Seguidamente ejecutamos la herramienta Lighthouse de Google para hacer la auditoría de nuestra web y saber si cumple los checks necesarios para ser una PWA.
 
 Como podemos ver, nuestra aplicación no se puede considerar una PWA según los criterios de Lighthouse porque aún no tenemos ninguna implementación (manifest, service workers, offline display, ...) para que lo sea realmente.
 
-Paso 5
+<h2>Paso 5</h2>
 Con la ayuda de @angular/cli vamos a añadir las características de una PWA a nuestra aplicación fácilmente.
 Ejecutamos en la raíz de nuestro proyecto angular:
 ng add @angular/pwa
@@ -57,7 +57,7 @@ ngsw-config.json: archivo de configuración y estrategias de cacheo para el serv
 app.module.ts: registra e instala el service worker ngsw-worker.js (auto generado por angular basado en ngsw-config.json)
 icons: iconos en diferentes tamaños para usarse como icono de aplicación cuando se instale en algún dispositivo
  
-Paso 6
+<h2>Paso 6</h2>
 Ejecutamos de nuevo Lighthouse para volver a auditar nuestra aplicación y ver qué ha cambiado.
 
 Como podemos ver, nuestra aplicación ya se considera una PWA y tiene la capacidad de ser instalada y ser usada offline, de cachear tanto index.html como assets, css, etc.
